@@ -3,8 +3,11 @@ node-maple
 
 Node-maple is a bridge between Node.js and the computer algebra system [Maple](www.maplesoft.com)
 
-Use it as
-
+Install using
+```
+npm install node-maple
+```
+and use as
 ```javascript
 var Maple = require('node-maple');
 var slave = new Maple('/path/to/maple/cli/executable');
