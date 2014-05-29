@@ -26,6 +26,9 @@ slave.queue('restart:').then(function() {
   // From here on you can use the value of a in your script
   console.log('Pi squared equals ' + a);
 });
+
+// Don't forget to quit after you're done, otherwise it will keep on running!
+slave.quit();
 ```
 
 If you expect a statement to output a numerical value, use Maple.numeric() to automatically parse it to a numeric value.
