@@ -42,5 +42,20 @@ slave.queue('diff(exp(x), x);').then(function(raw) {
     console.log('Raw output was: ', raw);
 });
 
+// Another example
+slave.queue('restart:').then(function() {
+  return slave.queue('a := Pi:');
+}).then(function() {
+  return slave.queue('f := x -> x^2:');
+}).then(function() {
+  // Note that you must use a semi-colon (;), otherwise Maple
+  // won't output the result!
+  // Alose, you MUST use evalf(), otherwise Maple just outputs Pi^2
+  return slave.numeric('evalf(f(a))^2;');
+}).then(function(a) {
+  // From here on you can use the value of a in your script
+  console.log('Pi squared equals ' + a);
+});
+
 // Quit Maple after you're done
 slave.quit();

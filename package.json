@@ -12,6 +12,13 @@
     "node"
   ],
   "author": "Sebastiaan Marynissen <sebastiaan.marynissen@ugent.be>",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/sebamarynissen/node-maple.git"
+  },
+  "bugs": {
+    "url": "https://github.com/sebamarynissen/node-maple/issues"
+  },
   "license": "MIT",
   "dependencies": {
     "jquery-deferred": "~0.3.0",
