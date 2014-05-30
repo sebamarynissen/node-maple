@@ -16,22 +16,16 @@ var slave = new Maple('/path/to/maple/cli/executable');
 From then on, you can use the main function Maple.queue() as
 
 ```javascript
-slave.queue('restart:').then(function() {
-  return slave.queue('a := Pi:');
-}).then(function() {
-  return slave.queue('f := x -> x^2:');
-}).then(function() {
-  // Note that you must use a semi-colon (;), otherwise Maple
-  // won't output the result!
-  // Alose, you MUST use evalf(), otherwise Maple just outputs Pi^2
-  return slave.numeric('evalf(f(a))^2;');
-}).then(function(a) {
-  // From here on you can use the value of a in your script
-  console.log('Pi squared equals ' + a);
-});
-
-// Don't forget to quit after you're done, otherwise it will keep on running!
-slave.quit();
+slave
+  .queue('restart:')
+  .queue('a := Pi:')
+  .queue('f := x -> x^2:')
+  .numeric('evalf(f(a));')
+  .then(function(x) {
+    console.log('Pi squared equals ' + x);
+  })
+  // Don't forget to quit after you're done, otherwise it will keep on running!
+  .quit();
 ```
 
 If you expect a statement to output a numerical value, use Maple.numeric() to automatically parse it to a numeric value.
